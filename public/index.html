@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hello Shawty</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            button {
+                all: unset;
+            }
+
+            body {
+                background-color: coral;
+                height: 100dvh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .title {
+                color: hsl(16, 100%, 20%);
+                font-size: 5rem;
+                margin-block: 3rem;
+            }
+
+            .button {
+                background-color: hsl(16, 100%, 30%);
+                padding: 4px 24px;
+                border-radius: 12px;
+                border: 0;
+                color: whitesmoke;
+                cursor: pointer;
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+                &:hover {
+                    background-color: hsl(16, 100%, 25%);
+                }
+            }
+
+            .result {
+                font-size: 1.2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="title">Hello Shawty</h1>
+        <button class="button">Test API</button>
+        <p class="result"></p>
+
+        <script>
+            const btn = document.querySelector(".button");
+            const result = document.querySelector(".result");
+            btn?.addEventListener("click", () => {
+                const origin = window.location.origin;
+                fetch(`${origin}/api/test`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log(data);
+                        const text = data?.response ?? "";
+                        result.textContent = text;
+                    })
+                    .catch((err) => console.error(err));
+            });
+        </script>
+    </body>
+</html>
