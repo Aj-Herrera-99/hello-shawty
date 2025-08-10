@@ -12,6 +12,6 @@ app.get("/api/test", (req, res) => {
 const hostname = process.env.HOSTNAME || "127.0.0.1";
 const port = process.env.PORT || 3000;
 app.listen(port, hostname, () => {
-    console.log("Server ascolta sulla porta: " + 3000);
+    console.log("Server ascolta sulla porta: " + port);
     console.log(`URL: http://${hostname}:${port}/`);
 });
